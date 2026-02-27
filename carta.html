@@ -4,7 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cartinha</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Importando fontes: uma para o corpo e uma cursiva para dar um toque pessoal */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Poppins:wght@300;400&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Fundo em degradê com os tons de azul favoritos dela */
+    background: linear-gradient(135deg, #001a33 0%, #003366 50%, #00509d 100%);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    z-index: 1;
+}
+
+.box {
+    background: rgba(255, 255, 255, 0.07); /* Efeito vidro */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Estilização dos parágrafos (o texto da sua carta) */
+.box p {
+    color: #e0f2f1; /* Branco levemente azulado para não agredir o olho */
+    line-height: 1.8;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    text-align: center;
+    opacity: 0; /* Começa invisível para o efeito de animação */
+    animation: slideUp 0.8s ease-out forwards;
+}
+
+/* Fazendo cada frase aparecer uma depois da outra */
+.box p:nth-child(1) { animation-delay: 0.5s; }
+.box p:nth-child(2) { animation-delay: 1.5s; }
+.box p:nth-child(3) { animation-delay: 2.5s; }
+.box p:nth-child(4) { animation-delay: 3.5s; }
+.box p:nth-child(5) { animation-delay: 4.5s; }
+.box p:nth-child(6) { animation-delay: 5.5s; font-weight: bold; color: #80d8ff; } /* Destaque nos olhos */
+.box p:nth-child(7) { animation-delay: 6.5s; }
+.box p:nth-child(8) { animation-delay: 7.5s; }
+.box p:nth-child(9) { animation-delay: 8.5s; font-family: 'Dancing Script', cursive; font-size: 1.4rem; color: #b3e5fc; }
+.box p:nth-child(10) { animation-delay: 9.5s; }
+.box p:nth-child(11) { animation-delay: 10.5s; }
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* Estrelas de fundo (geradas pelo JS que passamos antes) */
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: twinkle var(--duration) infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.2); }
+}
+    </style>
 </head>
 <body>
     <div class="container">
